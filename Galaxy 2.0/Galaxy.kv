@@ -1,0 +1,20 @@
+#:import menu menu
+MainWidget:
+
+<MainWidget>:
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: "images/bg1.jpg"
+    menu_widget: menu_widget
+    perspective_point_x : root.width/2
+    perspective_point_y : root.height*0.75
+    
+    MenuWidget:
+        id: menu_widget
+    Label:
+        text: root.score
+        font_name: "fonts/Vampire Wars.ttf"
+        font_size: dp(20)
+        size_hint:  .25, .25
+        pos_hint: {"center_x": .09, "center_y": .93}
