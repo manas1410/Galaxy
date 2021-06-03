@@ -37,7 +37,7 @@ class MainWidget(RelativeLayout):
     h_lines_spacing = .1 #percentage in screen in height
     horizontal_lines = []
 
-    speed = 0.8
+    speed = 0.7
     current_offset_y = 0
     current_y_loop =  0
 
@@ -102,6 +102,7 @@ class MainWidget(RelativeLayout):
         self.sound_restart.volume = .25
 
     def reset_game(self):
+        self.speed = 0.7
         self.current_offset_y = 0
         self.current_y_loop =  0
         self.current_speed_x = 0   
@@ -298,6 +299,9 @@ class MainWidget(RelativeLayout):
                 self.current_offset_y  -= spacing_y 
                 self.current_y_loop +=1
                 self.score = "S C O R E : "+str(self.current_y_loop)
+                if(self.current_y_loop%40==0):
+                    self.speed += 0.05
+                    #print(self.speed)
                 self.gererate_titles_coordinates()
 
             speed_x = self.current_speed_x * self.width / 100
@@ -323,7 +327,7 @@ class MainWidget(RelativeLayout):
         else:
             self.sound_begin.play()
         self.sound_music1.play()
-        print("BUtton")
+        #print("BUtton")
         self.reset_game()
         self.state_game_has_started = True 
         self.menu_widget.opacity = 0
